@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./CSS/index.css" />
+    <title>Document</title>
+    <style>
+      .car-row {
+        height: 10vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 4px 0 0 4px;
+      }
+      .bike-row {
+        height: 8vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        padding: 4px 0 0 4px;
+      }
+      .bike {
+        background-color: rgb(24, 206, 39);
+        height: 90%;
+        width: 90%;
+        cursor: pointer;
+        text-align: center;
+      }
+      .car{
+        background-color: rgb(24, 206, 39);
+        height: 90%;
+        width: 90%;
+        cursor: pointer;
+        text-align: center;
+      }
+      .road {
+        height: 4vh;
+        background-color: black;
+      }
+      .bike:hover{
+          transform: scale(1.1);
+          transition: .5ms;
+      }
+      .car:hover{
+          transform: scale(1.1,1.3);
+          transition: .5ms;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="center-main-div">
+      <div class="main-div">
+        <div class="bike-row">
+          <div class="bike">1</div>
+          <div class="bike">2</div>
+          <div class="bike">3</div>
+          <div class="bike">4</div>
+          <div class="bike">5</div>
+        </div>
+        <div class="road">road</div>
+        <div class="bike-row">
+          <div class="bike">1</div>
+          <div class="bike">2</div>
+          <div class="bike">3</div>
+          <div class="bike">4</div>
+          <div class="bike">5</div>
+        </div>
+        <div class="road">road</div>
+        <div class="bike-row">
+          <div class="bike">1</div>
+          <div class="bike">2</div>
+          <div class="bike">3</div>
+          <div class="bike">4</div>
+          <div class="bike">5</div>
+        </div>
+        <div class="road">road</div>
+        <div class="bike-row">
+          <div class="bike">1</div>
+          <div class="bike">2</div>
+          <div class="bike">3</div>
+          <div class="bike">4</div>
+          <div class="bike">5</div>
+        </div>
+        <div class="road">road</div>
+        <div class="car-row">
+          <div class="car">1</div>
+          <div class="car">2</div>
+          <div class="car">3</div>
+        </div>
+        <div class="road">road</div>
+        <div class="car-row">
+            <div class="car">1</div>
+            <div class="car">2</div>
+            <div class="car">3</div>
+      </div>
+    </div>
+  </body>
+</html>
