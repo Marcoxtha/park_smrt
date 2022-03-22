@@ -4,11 +4,9 @@
     box-sizing: border-box;
 }
 .main-div{
-    height:73vh;
-    width:70vw;
-    border:5px solid black;
-    
-    
+    height:auto;
+    width:30vw;
+    border:5px solid #28FFBF;    
 }
 .center-main-div{
 display: flex;

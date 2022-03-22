@@ -1,0 +1,36 @@
+        body {
+            background-image: url("./Images/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        nav {
+            font-family: 'Comic Sans MS';
+            overflow: hidden;
+            background-color: #5A7A74;
+            width: 100%;
+            height: 74px;
+            ;
+        }
+        
+        nav img {
+            height: 74px;
+            width: 85px;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        nav a {
+            float: right;
+            color: #fff;
+            padding: 20px 30px 20px 20px;
+            text-decoration: none;
+        }
+        
+        nav a:hover {
+            background-color: #3B544F;
+            font-size: 120%;
+            transition: 0.5s;
+        }
