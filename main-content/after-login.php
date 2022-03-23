@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./CSS/index.css" />
+    <link rel="stylesheet" href="../CSS/layout.css" />
     <title>Document</title>
     <style>
       .car-row {
@@ -42,7 +42,7 @@
           transition: .5ms;
       }
       .car:hover{
-          transform: scale(1.1,1.3);
+          transform: scale(1.1);
           transition: .5ms;
       }
 

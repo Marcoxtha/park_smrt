@@ -1,7 +1,7 @@
 #login {
     background: #d4d0dd;
     display: block;
-    margin-top: 75px;
+    /* margin-top: 75px; */
     margin-left: auto;
     margin-right: auto;
     width: 30%;
@@ -42,9 +42,12 @@ button.loginbtn,
     margin: 5px;
     background-color: rgb(20, 148, 105);
 }
-
 button.cancelbtn {
     margin: 5px;
     background-color: rgb(216, 86, 86);
     height: 30px
+}
+.error-message{
+    display: block;
+    color:red;
 }

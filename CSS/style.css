@@ -34,3 +34,7 @@
             font-size: 120%;
             transition: 0.5s;
         }
+        span a:hover{
+            transform: scale(1.1);
+          transition: .5ms;
+        }
