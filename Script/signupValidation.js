@@ -21,10 +21,12 @@ function validation(){
     if(full_name.trim()==""){
         fullNameValidation.innerHTML = "Full name cannot be empty";
         fullNameValidation.style.display = 'block';
+        isValidated = false;
     }
     else if(full_name_final == false){
         fullNameValidation.innerHTML = "Your full name doesn't match standard full name format";
         fullNameValidation.style.display = 'block';
+        isValidated = false;
     }
     else{
         isValidated = true;
@@ -33,10 +35,12 @@ function validation(){
     if(email.trim()==""){
         emailValidation.innerHTML = "Email cannot be empty";
         emailValidation.style.display = 'block';
+        isValidated = false;
     }
     else if(email_final == false){
         emailValidation.innerHTML = "Your email doesn't match standard email format";
         emailValidation.style.display = 'block';
+        isValidated = false;
     }
     else{
         isValidated = true;
@@ -45,10 +49,12 @@ function validation(){
     if(contact.trim() == ""){
         contactValidation.innerHTML = "Email cannot be empty";
         contactValidation.style.display = 'block';
+        isValidated = false;
     }
     else if(contact.length != 10){
         contactValidation.innerHTML = "Contact must be a 10 digit number";
         contactValidation.style.display = 'block';
+        isValidated = false;
     }
     else{
         isValidated = true;
@@ -57,14 +63,17 @@ function validation(){
     if(user_name.trim() == ""){
         userNameValidation.innerHTML = "User name cannot be empty";
         userNameValidation.style.display = 'block';
+        isValidated = false;
     }
     else if(user_name.length<8 || user_name.length>28 ){
         userNameValidation.innerHTML = "User name should be between 8 and 28 characters";
         userNameValidation.style.display = 'block';
+        isValidated = false;
     }
     else if(user_name_final == false){
         userNameValidation.innerHTML = "User username doesn't match standard username format.";
         userNameValidation.style.display = 'block';
+        isValidated = false;
     }
     else{
         isValidated = true;
@@ -73,10 +82,12 @@ function validation(){
     if(password == ""){
         passwordValidation.innerHTML = "Password cannot be empty";
         passwordValidation.style.display = 'block';
+        isValidated = false;
     }
     else if(password.length <8 || password.length>28){
         passwordValidation.innerHTML = "Password must be between 8 and 28 characters";
         passwordValidation.style.display = 'block';
+        isValidated = false;
     }
     else{
         isValidated = true;
@@ -85,6 +96,7 @@ function validation(){
     if (password != confirm_password){
         confirmPasswordValidation.innerHTML = "Your passwords doesn't match";
         confirmPasswordValidation.style.display = 'block';
+        isValidated = false;
     }
     else{
         isValidated = true;
