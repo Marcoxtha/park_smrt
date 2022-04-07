@@ -17,7 +17,7 @@ function validation(){
     var email_final = emailREGEXP.test(email);
     var user_nameREGEXP = /^[A-Za-z][A-Za-z0-9_]{7,29}$/;
     var user_name_final = user_nameREGEXP.test(user_name);
-    isValidated = false;
+    isValidated = true;
     if(full_name.trim()==""){
         fullNameValidation.innerHTML = "Full name cannot be empty";
         fullNameValidation.style.display = 'block';
@@ -29,7 +29,6 @@ function validation(){
         isValidated = false;
     }
     else{
-        isValidated = true;
         fullNameValidation.style.display = 'none';
     }
     if(email.trim()==""){
@@ -40,14 +39,13 @@ function validation(){
     else if(email_final == false){
         emailValidation.innerHTML = "Your email doesn't match standard email format";
         emailValidation.style.display = 'block';
-        isValidated = false;
+        isValidated = false;   
     }
     else{
-        isValidated = true;
         emailValidation.style.display = 'none';
     }
     if(contact.trim() == ""){
-        contactValidation.innerHTML = "Email cannot be empty";
+        contactValidation.innerHTML = "Contact cannot be empty";
         contactValidation.style.display = 'block';
         isValidated = false;
     }
@@ -57,7 +55,6 @@ function validation(){
         isValidated = false;
     }
     else{
-        isValidated = true;
         contactValidation.style.display = 'none';
     }
     if(user_name.trim() == ""){
@@ -76,7 +73,6 @@ function validation(){
         isValidated = false;
     }
     else{
-        isValidated = true;
         userNameValidation.style.display = 'none';
     }
     if(password == ""){
@@ -90,19 +86,22 @@ function validation(){
         isValidated = false;
     }
     else{
-        isValidated = true;
         passwordValidation.style.display = 'none';
     }
-    if (password != confirm_password){
+    if(confirm_password == ""){
+        confirmPasswordValidation.innerHTML = "Re-enter your password";
+        confirmPasswordValidation.style.display = 'block';
+        isValidated = false;
+    }
+    else if (password != confirm_password){
         confirmPasswordValidation.innerHTML = "Your passwords doesn't match";
         confirmPasswordValidation.style.display = 'block';
         isValidated = false;
     }
     else{
-        isValidated = true;
         confirmPasswordValidation.style.display = 'none';
     }
-    if(isValidated == true){
-        document.getElementById('signUpForm').submit();
+    if(isValidated){
+        document.getElementById("signUpForm").submit();
     }
 }

@@ -1,58 +1,32 @@
+<?php
+    session_start();
+    if(isset($_SESSION['user_details'])){?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../CSS/layout.css" />
-    <title>Document</title>
-    <style>
-      .car-row {
-        height: 10vh;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-        padding: 4px 0 0 4px;
-      }
-      .bike-row {
-        height: 8vh;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-        padding: 4px 0 0 4px;
-      }
-      .bike {
-        background-color: #BCFFB9;
-        height: 90%;
-        width: 90%;
-        cursor: pointer;
-        text-align: center;
-      }
-      .car{
-        background-color: #BCFFB9;
-        height: 90%;
-        width: 90%;
-        cursor: pointer;
-        text-align: center;
-      }
-      .road {
-        height: 6vh;
-        background-color: black;
-      }
-      .bike:hover{
-          transform: scale(1.1);
-          transition: .5ms;
-      }
-      .car:hover{
-          transform: scale(1.1);
-          transition: .5ms;
-      }
-
-    </style>
+    <script src="./../Script/script.js"></script>
+    <link rel='stylesheet' href='../CSS/after-login.css' />
+    <title>Park Smart</title> 
   </head>
   <body>
+  <nav>
+        <img src="../Images/new-logo.png">
+        <ul>
+          <li><?=$_SESSION['user_details']['full_name']?>
+            <ul>
+                <li><a>My History</a></li>
+                <li><a>Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+    </nav>
     <div class="center-main-div">
       <div class="main-div">
         <div class="bike-row">
-          <div class="bike"id="a1">A1</div>
+          <div class="bike" id="a1">A1</div>
           <div class="bike" id="a2">A2</div>
           <div class="bike" id="a3">A3</div>
           <div class="bike" id="a4">A4</div>
@@ -64,7 +38,7 @@
           <div class="bike" id="a10">A10</div>
           <div class="bike" id="a11">A11</div>
         </div>
-        <div class="road">road</div>
+        <div class="road"></div>
         <div class="bike-row">
           <div class="bike" id="b1">B1</div>
           <div class="bike" id="b2">B2</div>
@@ -78,7 +52,7 @@
           <div class="bike" id="b10">B10</div>
           <div class="bike" id="b11">B11</div>
         </div>
-        <div class="road">road</div>
+        <div class="road"></div>
         <div class="bike-row">
           <div class="bike" id="c1">C1</div>
           <div class="bike" id="c2">C2</div>
@@ -92,7 +66,7 @@
           <div class="bike" id="c10">C10</div>
           <div class="bike" id="c11">C11</div>
         </div>
-        <div class="road">road</div>
+        <div class="road"></div>
         <div class="bike-row">
           <div class="bike" id="d1">D1</div>
           <div class="bike" id="d2">D2</div>
@@ -106,7 +80,7 @@
           <div class="bike" id="d10">D10</div>
           <div class="bike" id="d11">D11</div>
         </div>
-        <div class="road">road</div>
+        <div class="road"></div>
         <div class="car-row">
           <div class="car" id="e1">E1</div>
           <div class="car" id="e2">E2</div>
@@ -115,7 +89,7 @@
           <div class="car" id="e5">E5</div>
           <div class="car" id="e7">E6</div>
         </div>
-        <div class="road">road</div>
+        <div class="road"></div>
         <div class="car-row">
             <div class="car" id="f1">F1</div>
             <div class="car" id="f2">F2</div>
@@ -127,3 +101,9 @@
     </div>
   </body>
 </html>
+<?php
+}
+else{
+  header('location:login.php');
+}
+?>

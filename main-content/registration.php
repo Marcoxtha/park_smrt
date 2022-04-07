@@ -42,37 +42,38 @@ if($_POST){
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../CSS/registration-style.css" />
-    <script src="../Script/signupValidation.js"></script>
-    <title>Sign up</title>
+    <script src="../Script/registrationValidation.js"></script>
+    <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Register to Park Smart</title>
 </head>
 
 <body>
     <div id="login">
-        <h2 style="text-align: center;">Sign up Form</h2>
+        <h1 style="">Sign up Form</h1>
         <div class="container">
             <form action="" method="POST" id="signUpForm" onsubmit="event.preventDefault();validation();">
-                <label for="full-name">Full Name</label>
-                <input type="text" id="full-name" placeholder="Enter your full name" name="full-name">
+            <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" placeholder="&#xf007;  Enter your full name" name="full-name">
                 <span id="full-name-validation" class="error-message"></span>
                 <label for="email">Email</label>
-                <input type="text" id="email" placeholder="Enter your email" name="email">
+                <input type="text" id="email" placeholder="&#xf0e0;  Enter your email" name="email">
                 <span id="email-validation" class="error-message"></span>
                 <label for="contact">Contact</label>
-                <input type="number" id="contact" placeholder="Enter your contact number" name="contact">
+                <input type="number" id="contact" placeholder="&#xf10b;  Enter your contact number" name="contact">
                 <span id="contact-validation" class="error-message"></span>
                 <label for="user-name">User Name</label>
-                <input type="text" id="user-name" placeholder="Create a user name" name="user-name">
+                <input type="text" id="user-name" placeholder="&#xf2c2;  Create a user name" name="user-name">
                 <span id="user-name-validation" class="error-message"></span>
                 <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Create a password" name="password">
+                <input type="password" id="password" placeholder="&#xf084;  Create a password" name="password">
                 <span id="password-validation" class="error-message"></span>
                 <label for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" placeholder="Confirm your password" name="confirm-password">
+                <input type="password" id="confirm-password" placeholder="&#xf00c;&#xf084;  Confirm your password" name="confirm-password">
                 <span id="confirm-password-validation" class="error-message"></span>
                 <span class="backend-error-message"><?= $error_message?></span>
                 <span class="message"><?= $message?></span>
-                <input type="submit" value="Signup">
-                <span>Already have an accout <a href="login.php">Proceed to login</a></span>
+                <button type="submit">Register</button>
             </form>
         </div>
     </div>
