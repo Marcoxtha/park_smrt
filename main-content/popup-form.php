@@ -17,7 +17,7 @@
   <body>
     <div class="popup">
     <div class="container">
-      <form action="" method="POST">
+      <form id="popup-form" action="" method="POST">
         <label for="full_name">Full Name</label>
         <input type="text" name="full_name" id="full_name">
         <span></span>
@@ -35,4 +35,10 @@
     </div>
     </div>
   </body>
+  <style>
+    #popup-form{
+      display:none;
+      z-index: 9;
+    }
+  </style>
 </html>

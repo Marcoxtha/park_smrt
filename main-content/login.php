@@ -16,7 +16,7 @@ if ( $_POST ) {
         if ( $password_validated == true ) {
             if ( $row[ 'is_admin' ] == 1 ) {
                 $_SESSION[ 'admin_details' ] = $row;
-                header( 'location:admin.php' );
+                header( 'location:admin-main.php' );
             } else {
                 $_SESSION[ 'user_details' ] = $row;
                 header( 'location:after-login.php' );

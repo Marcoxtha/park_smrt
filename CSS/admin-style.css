@@ -6,8 +6,8 @@
 
 .main_container {
     display: flex;
-    width: auto;
-    position: relative;
+    width: 100%;
+    /* position: relative; */
 }
 
 .admin_nav {
@@ -22,7 +22,7 @@
 .container {
     margin-left: 22%;
     margin-right: 15px;
-    width: 80%;
+    width: 70%;
     text-align: justify;
     min-height: 90vh;
 }
@@ -62,7 +62,8 @@
 table, tr, th, td {
     border: 1px solid black;
     border-collapse: collapse;
-    color: blue;
+    color: black;
+    margin: 0 0 0 0;
 
 }
 
@@ -78,7 +79,7 @@ td img {
 }
 
 th {
-    background-color: blue;
+    background-color:chocolate;
     color: white;
     border: 1px solid black;
     text-align: center;
@@ -90,10 +91,15 @@ th {
 
 .info {
     margin-top: 30px;
-    background-color: blue;
+    background-color: #d4d0dd;
     padding: 30px 20px;
     border-radius: 10px;
     line-height: 30px;
+    color:black;
+    width:90%;
+}
+.info b{
+    color:black;
 }
 
 .danger_btn {
