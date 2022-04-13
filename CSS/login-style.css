@@ -63,3 +63,7 @@ a{
 label{
     font-weight: bold;
 }
+hr{
+    height: 3px;
+    background-color: rgb(20, 148, 105);
+}

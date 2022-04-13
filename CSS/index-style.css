@@ -80,3 +80,15 @@
         input[type=radio]{
             display: none;
         }
+        .middle {
+            height: 80.4vh;
+            color: #28FFBF;
+        }
+        
+        .main-message {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-self: center;
+            flex-direction: column;
+        }

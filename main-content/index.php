@@ -16,8 +16,21 @@
         <a href="login.php">Login</a>
         <a href="registration.php">Register</a>
     </nav>
-    <div class="main-text">
+    <div class="middle">
+        <div class="main-message">
+            <br><br><br><br><br><br><br>
+            <h1>Welcome to Park Smart</h1>
+            <br>
+            <h2>********************</h2>
+            <br>
+            <h2>**********************</h2>
+            <h2>***************************</h2>
+            <h2>*****************************</h2>
+            <h2>******************************</h2>
+            <h2>*********************************</h2>
+            <h2>Thanks!</h2>
 
+        </div>
     </div>
     <div class="footer">
         <i class="fa-brands fa-facebook"></i>

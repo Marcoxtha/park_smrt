@@ -64,6 +64,9 @@ mysqli_close( $conn );
                     <?=$error_msg2?>
                 </span>
                 <button type='submit'>Login</button>
+                <hr>
+                <span style="text-align:center"><b>Don't have an account</b></span>
+                <a href="registration.php"><button type="button">Create an account</button></a>
             </div>
         </form>
     </div>

@@ -74,6 +74,9 @@ if($_POST){
                 <span class="backend-error-message"><?= $error_message?></span>
                 <span class="message"><?= $message?></span>
                 <button type="submit">Register</button>
+                <hr>
+                <span style="text-align:center"><b>Already have an account</b></span>
+                <a href="login.php"><button type="button">Proceed to Login</button></a>
             </form>
         </div>
     </div>
