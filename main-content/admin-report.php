@@ -4,7 +4,7 @@
     if(!isset($_SESSION['admin_details'])){
         header('location:login.php');
     }
-    $query = "SELECT * from `user_details`";
+    $query = "SELECT * from `booking_table`";
     $query_result = mysqli_query($conn,$query); 
     $i=1;
 ?>
@@ -17,10 +17,12 @@ require_once "admin-nav.php";
             <table>
                 <tr>
                     <th>S No.</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Contact</th>
-                    <th>Is Admin</th>
+                    <th>Full Name</th>
+                    <th>Vehicle No.</th>
+                    <th>Date</th>
+                    <th>Arrival Time</th>
+                    <th>Departure Time</th>
+                    <th>Price</th>
 
                 </tr>
                 <?php
@@ -33,16 +35,17 @@ while( $query_row = mysqli_fetch_array($query_result) )
                     <td><?php echo $i ?></td>
                     <td><?php echo $query_row[ 'full_name' ];
     ?></td>
-                    <td><?php echo $query_row[ 'email' ];
+                    <td><?php echo $query_row[ 'vehicle_no' ];
     ?></td>
-                    <td><?php echo $query_row[ 'contact' ];
+                    <td><?php echo $query_row[ 'date' ];
     ?></td>
-                    <td><?php if ( $query_row[ 'is_admin' ]==1 ) {
-        echo 'True';
-    } else {
-        echo 'False';
-    }
+                    <td><?php echo $query_row[ 'arrival_time' ];
     ?></td>
+                    <td><?php echo $query_row[ 'departure_time' ];
+    ?></td>
+                    <td><?php echo $query_row[ 'price' ];
+    ?></td>
+                    
 
 
                 </tr>

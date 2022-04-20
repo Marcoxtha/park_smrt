@@ -41,12 +41,19 @@ body {
     height: 90.2vh;
     width: auto;
 }
-
+.text{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    background-color: yellowgreen;
+    margin-right: 10%;
+    margin-bottom: 10%;
+}
 .car-row {
     height: 10vh;
     width: 40vw;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     padding: 4px 0 0 4px;
 }
 
@@ -54,7 +61,7 @@ body {
     height: 8vh;
     width: 40vw;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     padding: 4px 0 0 4px;
 }
 
@@ -154,4 +161,8 @@ ul li:hover ul li:hover {
 a {
     text-decoration: none;
     color: white;
+}
+.success_msg{
+    color:greenyellow;
+    z-index: 2;
 }

@@ -27,7 +27,7 @@
                 <li>Users</li>
             </div>
         </a>
-        <a href="report.php" class="admin_nav_link">
+        <a href="admin-report.php" class="admin_nav_link">
             <div class="admin_nav_item">
                 <i class="fa fa-file-text-o" aria-hidden="true"></i>
                 <li>Report</li>

@@ -1,6 +1,9 @@
 <?php
     include "database_configuration.php";
     session_start();
+    if(!isset($_SESSION['admin_details'])){
+        header('location:login.php');
+    }
 ?>
 <div class="main_container">
         <?php require_once 'admin-nav.php';?>

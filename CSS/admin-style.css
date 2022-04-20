@@ -20,6 +20,7 @@
 }
 
 .container {
+    /* margin-top: 12%; */
     margin-left: 22%;
     margin-right: 15px;
     width: 70%;
@@ -90,7 +91,7 @@ th {
 } */
 
 .info {
-    margin-top: 30px;
+    /* margin-top: 30px; */
     background-color: #d4d0dd;
     padding: 30px 20px;
     border-radius: 10px;
