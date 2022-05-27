@@ -70,6 +70,7 @@ $i = 1;
                url: "http://localhost/Park-Smart/main-content/makeadmin.php?id="+id,
                type:'GET',
                success:function(res){
+                alert (res);
                    window.location.href="http://localhost/park-smart/main-content/users.php";
                     // $('#message').html(res);
                }
@@ -80,6 +81,7 @@ $i = 1;
                url: "http://localhost/Park-Smart/main-content/deleteuser.php?id="+id,
                type:'GET',
                success:function(res){
+                alert (res);
                    window.location.href="http://localhost/park-smart/main-content/users.php";
                     // $('#message').html(res);
                }

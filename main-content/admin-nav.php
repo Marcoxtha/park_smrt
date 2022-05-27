@@ -39,6 +39,12 @@
                 <li>Report</li>
             </div>
         </a>
+        <a href="change-rates.php" class="admin_nav_link">
+            <div class="admin_nav_item">
+            <i class="fa fa-money" aria-hidden="true"></i>
+                <li>Change Rates</li>
+            </div>
+        </a>
         <a href="admin-logout.php" class="admin_nav_link">
         <div class="admin_nav_item">
             <i class="fa-solid fa-right-from-bracket"></i>
