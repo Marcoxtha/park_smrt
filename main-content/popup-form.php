@@ -1,44 +1,210 @@
 <?php
+session_start();
+$msg = "";
+include "database_configuration.php";
+    $id = $_GET['id'];
+    $slot_type = $_GET['class'];
+    $query = "SELECT `cost` from `price` where vehicle_class='$slot_type'";
+    $runquery = mysqli_query($conn,$query);
+    $ratequery = mysqli_fetch_assoc($runquery);
+    $rate = $ratequery['cost'];
+
+if ($_POST) {
+  $price = $_POST['price'];
+  $listing = "SELECT * from `booking_table` where `slot_id`= $id";
+    $listing_run = mysqli_query($conn,$listing);
+  $i=0;
+  while($listing_row = mysqli_fetch_assoc($listing_run)){
+                    $arr[$i] = $listing_row['arrival_time'];
+                    $arr2[$i] = $listing_row['departure_time'];
+                    $i++;
+
+  }
+  if(isset($arr)){
+    $length = count($arr);
+    // echo $length;
+  }
+  else{
+    $length = 0;
+  }
+  $date = date("Y-m-d");
+  $full_name = $_SESSION['user_details']['full_name'];
+  $user_id = $_SESSION['user_details']['user_id'];
+  $vehicle_num = $_REQUEST['vehicle_no'];
+  $arrival_time = $_REQUEST['arrival_time'];
+  $departure_time = $_REQUEST['departure_time'];
+  $isvalid = false;
+  for($i=0;$i<$length;$i++)
+  {
+    if($arrival_time>=$arr[$i] && $departure_time<=$arr2[$i]){
+      $msg = "The time you entered is already booked by others.";
+      $isvalid = false;
+    }
+
+    else{
+      $isvalid = true;
+    }
+  }
+  if($price==NULL){
+    $msg = "Please calculate the price first";
+  }
+  else{
+    if($isvalid == true){
+      $sql = "INSERT INTO `booking_table` (`slot_id`,`user_id`,`full_name`,`vehicle_no`,`date`,`arrival_time`,`departure_time`,`price`) 
+      VALUES ($id,$user_id,'$full_name','$vehicle_num','$date','$arrival_time','$departure_time','$price');";
+$result = mysqli_query($conn, $sql);
+if ($result != false) {
+$msg = "Booked Successfully";
+// header("location:http://localhost/Park-Smart/main-content/paymentMethod.php?");
+// header('location:bill-report.php');
+}
+else{
+  $msg = "Couldn't book the space.";
+}
+    }
+  
+  }
+} 
+
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel='stylesheet' href='../CSS/popup-style.css'/>
-    <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Book Space</title>
-  </head>
-  <body>
-    <div class="popup">
-    <div class="container">
-      <form id="popup-form" action="" method="POST">
-        <label for="full_name">Full Name</label>
-        <input type="text" name="full_name" id="full_name">
-        <span></span>
-        <label for="vehicle_no">Vehicle No.</label>
-        <input type="number" name="vehicle_no" id="vehicle_no">
-        <span></span>
-        <label for="arrival_time">Arrival Time</label>
-        <input type="time" name="arrival_time" id="arrival_time">
-        <span></span>
-        <label for="departure_time">Departure Time</label>
-        <input type="time" name="departure_time" id="departure_time">
-        <span></span>
-        <button type="submit">Book Now</button>
-      </form>
-    </div>
-    </div>
-  </body>
-  <style>
-    #popup-form{
-      display:none;
-      z-index: 9;
-    }
-  </style>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel='stylesheet' href='../CSS/popup-style.css' />
+  <link rel='stylesheet' href='../CSS/after-login.css' />
+  <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
+  <script src="../Script/script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Book Space</title>
+</head>
+
+<body>
+<nav>
+      <img src="../Images/new-logo.png">
+      <div id="overflow">
+        <ul>
+
+          <li><?= $_SESSION['user_details']['full_name'] ?>
+            <ul>
+              <li><a href="my-history.php">My History</a></li>
+              <li><a href="user-logout.php">Logout</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+  <div id="content">
+  <div id="form">
+    <form id="popup-form" action="" method="post">
+      <input type="hidden" id="selected_slot" name="selected_slot" value="<?= $id ?>" >
+      <label for="rate">Rate (Per 30 minutes)</label>
+      <input type="number" id="rate" name="rate" id="rate" value="<?= $rate ?>" readonly>
+      <label for="vehicle_no">Vehicle No.</label>
+      <input type="number" name="vehicle_no" id="vehicle_no" required>
+      <label for="arrival_time">Arrival Time</label>
+      <input type="time" name="arrival_time" id="arrival_time" required>
+      <label for="departure_time">Departure Time</label>
+      <input type="time" name="departure_time" id="departure_time" required>
+      <label for="price">Price</label>
+      <input type="number" name="price" id="price" placeholder="Click on calculate to find price" value="" readonly>
+      <span class="msg"><?= $msg ?></span>
+      <button type="button"onclick="validation();">Calculate Price</button>
+      <button type="submit">Book Now</button>
+      <button type="button"class="btn cancel" onclick="closeForm()">Close</button>
+     
+    </form>
+  </div>
+  <div id="listing">
+        <table>
+          <caption>Booking Listing of the selected slot</caption>
+            <tr>
+              <th>Arrival Time</th>
+              <th>Departure Time</th>
+            </tr>
+            <?php $i=0 ?>
+            
+            <?php $listing = "SELECT * from `booking_table` where `slot_id`= $id";
+    $listing_run = mysqli_query($conn,$listing); while($listing_row = mysqli_fetch_assoc($listing_run)){ ?>
+              <tr>
+                <td><?php echo $listing_row['arrival_time']; ?></td>
+                <td><?php echo $listing_row['departure_time']; ?></td>
+              </tr>
+
+            <?php } ?>
+            <!-- <div>Please book in the time other than above listed time</div> -->
+
+        </table>
+        <p>Please book on the time other than this listing</p>
+  </div>
+  </div>
+</body>
 </html>
+
+<script>
+  function validation() {
+    var arrivalTime = document.getElementById("arrival_time").value;
+    var departureTime = document.getElementById("departure_time").value;
+    isValidate = true;
+    // alert(arrivalTime);
+    // alert(departureTime);
+    const today = new Date();
+    let h = today.getHours();
+    let m = today.getMinutes();
+    m = checkTime(m);
+    let s = h + ":" + m;
+    // alert("current time" + s);
+
+    if (arrivalTime <= s) {
+      alert("Invalid Time");
+      isValidate = false;
+    }
+    if(isValidate){
+      diff();
+    }
+
+
+  }
+
+  function checkTime(i) {
+    if (i < 10) {
+      i = "0" + i
+    }; // add zero in front of numbers < 10
+    return i;
+  }
+
+  function diff() {
+    var start = document.getElementById("arrival_time").value;
+    var end = document.getElementById("departure_time").value;
+    start = start.split(":");
+    end = end.split(":");
+    var startDate = new Date(0, 0, 0, start[0], start[1], 0);
+    var endDate = new Date(0, 0, 0, end[0], end[1], 0);
+    var diff = endDate.getTime() - startDate.getTime();
+    //difference in arrival and departure time
+    var minutes = Math.floor(diff / 1000 / 60);
+
+    // alert("difference in arrival and departure" + minutes);
+    // document.getElementById("diff").innerHTML = minutes;
+
+    if (minutes <= 30) {
+      alert("Time too short");
+    }
+    //units=how many 30 minutes diff
+    m=parseInt(minutes);
+  
+    var unit=m/30;
+    var unit=Math.round(unit);
+    // alert("integer banako minutes lai"+ m);
+    var price = document.getElementById('rate').value;
+    var cost= price*unit;
+    // alert("total cost" + cost);
+    document.getElementById('price').value=cost;
+  }
+</script>
+

@@ -28,27 +28,35 @@ body {
 }
 
 .main-div {
-  
+    overflow: auto;
     height: auto;
     width: auto;
     border: 5px solid #55cbae;
+    border-radius: 10px;
+    margin-top: 2%;
 }
 
 .center-main-div {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90.2vh;
+    height: auto;
     width: auto;
 }
-.text{
+
+.text {
     text-align: center;
     display: flex;
     justify-content: center;
-    background-color: yellowgreen;
+    align-content: center;
+    flex-direction: column;
+    color: aquamarine;
+    background-color: black;
     margin-right: 10%;
     margin-bottom: 10%;
+    font-size: 30px;
 }
+
 .car-row {
     height: 10vh;
     width: 40vw;
@@ -72,6 +80,7 @@ body {
     cursor: pointer;
     text-align: center;
 }
+
 .bike-booked {
     background-color: red;
     height: 90%;
@@ -87,6 +96,7 @@ body {
     cursor: pointer;
     text-align: center;
 }
+
 .car-booked {
     background-color: red;
     height: 90%;
@@ -123,15 +133,6 @@ ul {
     font-size: large;
 }
 
-
-/* ul li ul li {
-    display: none;
-}
-
-ul li:hover ul li {
-    display: block;
-} */
-
 #overflow {
     display: block;
     overflow: hidden;
@@ -162,7 +163,13 @@ a {
     text-decoration: none;
     color: white;
 }
-.success_msg{
-    color:greenyellow;
+
+.success_msg {
+    color: greenyellow;
     z-index: 2;
+}
+#hide{
+    visibility: hidden;
+    width: 10px;
+    height: 4.5px;
 }

@@ -1,22 +1,20 @@
-        *{
-            margin:0;
-            padding:0;
+        * {
+            margin: 0;
+            padding: 0;
         }
+        
         body {
             background-image: url("../Images/background.jpg");
             background-repeat: no-repeat;
             background-size: cover;
         }
-        
         nav {
             font-family: 'Comic Sans MS';
             overflow: hidden;
             background-color: #5A7A74;
             width: 100%;
             height: 9.8vh;
-            /* display: flex;
-            align-items: center;
-            justify-content: space-between; */
+           
         }
         
         nav img {
@@ -24,9 +22,7 @@
             width: auto;
         }
         
-        a {
-            text-decoration: none;
-        }
+        
         
         nav a {
             float: right;
@@ -40,46 +36,33 @@
             font-size: 120%;
             transition: 0.5s;
         }
-        .main-text{
-            height:80.4vh;
-            
+        
+        
+        .main-text {
+            height: 80.4vh;
         }
-        .footer{
-            height:9.8vh;
+        
+        .footer {
+            height: 9.8vh;
             background-color: #5A7A74;
+            margin-bottom: 0px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
         }
-        nav h1{
-            color:red;
+        
+        a {
+            text-decoration: none;
         }
-        i{
-            color:red;
+        
+        i {
+            color: red;
             font-size: 3rem;
         }
-        .login-box{
+        input[type=radio] {
             display: none;
         }
-        .registration-box{
-            display: none;
-        }
-        #box1:checked~.login-box{
-            display: block;
-            position: absolute;
-            top: 25%;
-            /* left: 25%;
-            right: 25%; */
-            width:100%;
-        }
-        #box2:checked~.registration-box{
-            display: block;
-            position: absolute;
-            top: 10%;
-            /* left: 25%;
-            right: 25%; */
-            width:100%;
-        }
-        input[type=radio]{
-            display: none;
-        }
+        
         .middle {
             height: 80.4vh;
             color: #28FFBF;
@@ -91,4 +74,9 @@
             align-items: center;
             align-self: center;
             flex-direction: column;
+        }
+        .icons{
+            display: grid;
+            justify-content: space-between;
+            grid-template-columns: 1fr 1fr 1fr;
         }

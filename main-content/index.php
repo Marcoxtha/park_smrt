@@ -11,11 +11,12 @@
 </head>
 
 <body>
-    <nav>
+    <!-- <nav>
         <img src="../Images/new-logo.PNG">
         <a href="login.php">Login</a>
         <a href="registration.php">Register</a>
-    </nav>
+    </nav> -->
+    <?php include_once "header.php"; ?>
     <div class="middle">
         <div class="main-message">
             <br><br><br><br><br><br><br>
@@ -32,11 +33,7 @@
 
         </div>
     </div>
-    <div class="footer">
-        <i class="fa-brands fa-facebook"></i>
-        <i class="fa-brands fa-github"></i>
-        <i class="fa-solid fa-envelope"></i>
-    </div>
+    <?php include_once "footer.php"; ?>
 </body>
 
 </html>

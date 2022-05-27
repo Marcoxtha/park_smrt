@@ -27,6 +27,12 @@
                 <li>Users</li>
             </div>
         </a>
+        <a href="slots_status.php" class="admin_nav_link">
+        <div class="admin_nav_item">
+        <i class="fa fa-th" aria-hidden="true"></i>
+            <li class="bottom_item">Slots</li>
+        </div>
+        </a>
         <a href="admin-report.php" class="admin_nav_link">
             <div class="admin_nav_item">
                 <i class="fa fa-file-text-o" aria-hidden="true"></i>

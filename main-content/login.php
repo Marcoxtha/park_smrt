@@ -3,6 +3,9 @@ session_start();
 $error_msg = '';
 $error_msg2 = '';
 include 'database_configuration.php';
+if(isset($_SESSION['user_details'])){
+    header('location:after-login.php');
+}
 if ( $_POST ) {
     $user_name = $_REQUEST[ 'user-name' ];
     $password = $_REQUEST[ 'password' ];

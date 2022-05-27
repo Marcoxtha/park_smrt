@@ -23,7 +23,7 @@
     /* margin-top: 12%; */
     margin-left: 22%;
     margin-right: 15px;
-    width: 70%;
+    width: auto;
     text-align: justify;
     min-height: 90vh;
 }
@@ -60,47 +60,47 @@
     background-color: black;
 }
 
-table, tr, th, td {
+table,
+tr,
+th,
+td {
     border: 1px solid black;
     border-collapse: collapse;
     color: black;
     margin: 0 0 0 0;
-
 }
 
-th, td {
-    padding: 10px 20px;
+th,
+td {
+    padding: 10px 16px;
     max-width: 100%;
     word-wrap: break-word;
 }
 
-td img {
-    height: 80px;
-    width: 80px;
-}
-
 th {
-    background-color:chocolate;
+    background-color: chocolate;
     color: white;
     border: 1px solid black;
     text-align: center;
 }
+
 
 /* table{
     margin: 30px 0px;
 } */
 
 .info {
-    /* margin-top: 30px; */
+    margin-top: 30px;
     background-color: #d4d0dd;
     padding: 30px 20px;
     border-radius: 10px;
     line-height: 30px;
-    color:black;
-    width:90%;
+    color: black;
+    width: 90%;
 }
-.info b{
-    color:black;
+
+.info b {
+    color: black;
 }
 
 .danger_btn {
@@ -109,17 +109,17 @@ th {
     padding: 5px 10px;
     margin-top: 4%;
     text-decoration: none;
-    height:30px;
-    width:80px;
+    height: auto;
+    width: auto;
 }
 
 .primary_btn {
-    background-color: blue;
+    background-color: green;
     color: white;
     padding: 5px 10px;
     text-decoration: none;
-    height:30px;
-    width:80px;
+    height: auto;
+    width: auto;
 }
 
 .form {
@@ -147,4 +147,8 @@ form textarea {
     margin-left: 2%;
     resize: none;
     color: blue;
+}
+td a {
+    text-decoration: none;
+    color:black;
 }

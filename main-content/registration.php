@@ -50,7 +50,7 @@ if($_POST){
 
 <body>
     <div id="login">
-        <h1 style="">Sign up Form</h1>
+        <h1>Registration Form</h1>
         <div class="container">
             <form action="" method="POST" id="signUpForm" onsubmit="event.preventDefault();validation();">
             <label for="full-name">Full Name</label>

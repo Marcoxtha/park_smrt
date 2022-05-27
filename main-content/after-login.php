@@ -30,7 +30,7 @@ else{
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
-    <link rel='stylesheet' href='../CSS/popup-style.css'/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel='stylesheet' href='../CSS/after-login.css' />
     <title>Park Smart</title>
   </head>
@@ -55,7 +55,7 @@ else{
     <div class="center-main-div">
       <div class="main-div">
         <div class="bike-row">
-          <div class="text">Bike</div>
+          <div class="text"><i class="fa fa-motorcycle" aria-hidden="true"></i></div>
           <?php
             while($row1=$run1->fetch_assoc()){
               if($row1['slot_status']==0){?>
@@ -68,7 +68,7 @@ else{
         </div>
         <div class="road"></div>
         <div class="bike-row">
-        <div class="text">Bike</div>
+        <div class="text"><i class="fa fa-motorcycle" aria-hidden="true"></i></div>
           <?php
             while($row2=$run2->fetch_assoc()){
               if($row2['slot_status']==0){?>
@@ -81,7 +81,7 @@ else{
         </div>
         <div class="road"></div>
         <div class="bike-row">
-        <div class="text">Bike</div>
+        <div class="text"><i class="fa fa-motorcycle" aria-hidden="true"></i></div>
           <?php
             while($row3=$run3->fetch_assoc()){
               if($row3['slot_status']==0){?>
@@ -94,7 +94,7 @@ else{
         </div>
         <div class="road"></div>
         <div class="bike-row">
-        <div class="text">Bike</div>          
+        <div class="text"><i class="fa fa-motorcycle" aria-hidden="true"></i></div>          
           <?php
             while($row4=$run4->fetch_assoc()){
               if($row4['slot_status']==0){?>
@@ -107,7 +107,7 @@ else{
         </div>
         <div class="road"></div>
         <div class="car-row">
-        <div class="text">Car</div>
+        <div class="text"><i class="fa fa-car" aria-hidden="true"></i></div>
           <?php
             while($row5=$run5->fetch_assoc()){
               if($row5['slot_status']==0){?>
@@ -120,7 +120,7 @@ else{
         </div>
         <div class="road"></div>
         <div class="car-row">
-        <div class="text">Car</div>
+        <div class="text"><i class="fa fa-car" aria-hidden="true"></i></div>
           <?php
             while($row6=$run6->fetch_assoc()){
               if($row6['slot_status']==0){?>
@@ -133,55 +133,4 @@ else{
         </div>
       </div>
 
-    <div id="form">
-      <form id="popup-form" action="" method="POST">
-        <input type="hidden" id="selected_slot" name="selected_slot" value="">
-        
-        <label for="vehicle_no">Vehicle No.</label>
-        <input type="number" name="vehicle_no" id="vehicle_no" required>
-        <label for="arrival_time">Arrival Time</label>
-        <input type="time" name="arrival_time" id="arrival_time" required>
-        <label for="departure_time">Departure Time</label>
-        <input type="time" name="departure_time" id="departure_time" required>
-        <span class="success_msg"><?=$success_msg?></span>
-        <input type="submit" value="Book Now"></input>
-        <button class="btn cancel" onclick="closeForm()">Close</button>
-      </form>
-    </div>
-    </div>
-       
-      
-</div>
-  </body>
-  <script src="../Script/script.js"></script>
-  <style>
-    #form{
-      display:none;     
-      
-    }
-    
-  </style>
-
-  </html>
-<?php
-// session_start();
-include "database_configuration.php";
-    if($_POST){
-        $date = date("Y-m-d");
-        $slot_id = $_REQUEST['selected_slot'];
-        $full_name = $_SESSION['user_details']['full_name'];
-        $user_id = $_SESSION['user_details']['user_id'];
-        $vehicle_num = $_REQUEST['vehicle_no'];
-        $arrival_time = $_REQUEST['arrival_time'];
-        $departure_time = $_REQUEST['departure_time'];
-        $sql = "INSERT INTO `booking_table` (`slot_id`,`user_id`,`full_name`,`vehicle_no`,`date`,`arrival_time`,`departure_time`) 
-                VALUES ($slot_id,$user_id,'$full_name','$vehicle_num','$date','$arrival_time','$departure_time');";
-        $sql2 = "UPDATE `slots` SET `slot_status` = 1 where `slot_id` = $slot_id";
-        $result = mysqli_query($conn,$sql);
-        $result2 = mysqli_query($conn,$sql2);
-        if($result!= false){
-          $success_msg = "Booked Successfully";
-          header('location:bill-report.php');
-        }
-      }
-?>
+      <script src="../Script/script.js"></script>
