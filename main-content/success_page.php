@@ -2,7 +2,7 @@
 require_once "../configuration/database_configuration.php";
 if ($_GET && isset($_REQUEST["refId"])) {
     //Fetch record with respect to payment request id
-    $sql = "Select * from tbl_purchases where amount = "
+    $sql = "SELECT * from `booking_table` where `price` = "
         . $_REQUEST['amt'] . " AND payment_request_id = '" . $_REQUEST['oid']
         . "' AND payment_status = 0";
 
@@ -28,11 +28,10 @@ if ($_GET && isset($_REQUEST["refId"])) {
 
         if (strpos($response, "Success") !== false) {
             //Need to update the database with the transaction reference id
-            $sql = "Update tbl_purchases set transaction_id = '" 
-            . $_REQUEST['refId']."', payment_status = 1 
+            $sql = "UPDATE `booking_table` set payment_status = 1 
             where payment_request_id = '" .$purchaseData["payment_request_id"]."'" ;
             if(mysqli_query($conn, $sql)) {
-                echo "<h1>Transaction completed successfully</h1>";
+                echo "<h1>Booking Successful</h1>";
             } else {
                 echo "Some problem occurred while saving the request in our end. Please contact the administrator or call us at +977-9851320011.";
             }

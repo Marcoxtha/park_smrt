@@ -1,3 +1,3 @@
 <?php
-   echo "Tait!! paisa chaina.";
+   echo "Sorry, You don't seem to have enough balance.";
 ?>

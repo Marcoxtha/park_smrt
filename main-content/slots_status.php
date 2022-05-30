@@ -29,7 +29,7 @@
 
                         ?>
                         <tr>
-                        <td><?php echo $id;?></td>
+                        <td><?php echo $name;?></td>
                         <td><?php 
                             if($status==0)
                             print "Available";

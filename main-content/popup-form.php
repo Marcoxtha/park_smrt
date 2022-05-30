@@ -8,8 +8,13 @@ include "database_configuration.php";
     $runquery = mysqli_query($conn,$query);
     $ratequery = mysqli_fetch_assoc($runquery);
     $rate = $ratequery['cost'];
-
+    $payment_request_id = "PRID-". rand(1,1000000);
 if ($_POST) {
+  
+  $query3 = "SELECT `slot_name` from `slots` where `slot_id`=$id";
+    $run_query3 = mysqli_query($conn,$query3);
+    $result3 = mysqli_fetch_assoc($run_query3);
+    $slot_name = $result3['slot_name'];
   $price = $_POST['price'];
   $listing = "SELECT * from `booking_table` where `slot_id`= $id";
     $listing_run = mysqli_query($conn,$listing);
@@ -20,39 +25,39 @@ if ($_POST) {
                     $i++;
 
   }
-  if(isset($arr)){
-    $length = count($arr);
-    // echo $length;
-  }
-  else{
-    $length = 0;
-  }
+  // if(isset($arr)){
+  //   $length = count($arr);
+  //   // echo $length;
+  // }
+  // else{
+  //   $length = 0;
+  // }
   $date = date("Y-m-d");
   $full_name = $_SESSION['user_details']['full_name'];
   $user_id = $_SESSION['user_details']['user_id'];
   $vehicle_num = $_REQUEST['vehicle_no'];
   $arrival_time = $_REQUEST['arrival_time'];
   $departure_time = $_REQUEST['departure_time'];
-  $isvalid = false;
-  for($i=0;$i<$length;$i++)
-  {
-    if($arrival_time>=$arr[$i] && $departure_time<=$arr2[$i]){
-      $msg = "The time you entered is already booked by others.";
-      $isvalid = false;
-    }
+  // $isvalid = false;
+  // for($i=0;$i<$length;$i++)
+  // {
+  //   if($arrival_time>=$arr[$i] && $departure_time<=$arr2[$i]){
+  //     $msg = "The time you entered is already booked by others.";
+  //     $isvalid = false;
+  //   }
 
-    else{
-      $isvalid = true;
-    }
-  }
+  //   else{
+  //     $isvalid = true;
+  //   }
+  // }
   if($price==NULL){
     $msg = "Please calculate the price first";
   }
   else{
-    if($isvalid == true){
-      $sql = "INSERT INTO `booking_table` (`slot_id`,`user_id`,`full_name`,`vehicle_no`,`date`,`arrival_time`,`departure_time`,`price`) 
-      VALUES ($id,$user_id,'$full_name','$vehicle_num','$date','$arrival_time','$departure_time','$price');";
+      $sql = "INSERT INTO `booking_table` (`slot_id`,`user_id`,`full_name`,`vehicle_no`,`date`,`arrival_time`,`departure_time`,`price`,`payment_request_id`) 
+      VALUES ($id,$user_id,'$full_name','$vehicle_num','$date','$arrival_time','$departure_time','$price','$payment_request_id');";
 $result = mysqli_query($conn, $sql);
+  }
 if ($result != false) {
 $msg = "Booked Successfully";
 // header("location:http://localhost/Park-Smart/main-content/paymentMethod.php?");
@@ -62,9 +67,6 @@ else{
   $msg = "Couldn't book the space.";
 }
     }
-  
-  }
-} 
 
 
 ?>
@@ -101,7 +103,8 @@ else{
     </nav>
   <div id="content">
   <div id="form">
-    <form id="popup-form" action="" method="post">
+    <!-- <form id="popup-form" action="http://uat.esewa.com.np/epay/main" method="post"> -->
+      <form id="popup-form" action="" method="post">
       <input type="hidden" id="selected_slot" name="selected_slot" value="<?= $id ?>" >
       <label for="rate">Rate (Per 30 minutes)</label>
       <input type="number" id="rate" name="rate" id="rate" value="<?= $rate ?>" readonly>
@@ -114,6 +117,15 @@ else{
       <label for="price">Price</label>
       <input type="number" name="price" id="price" placeholder="Click on calculate to find price" value="" readonly>
       <span class="msg"><?= $msg ?></span>
+      <input value="<?= $price ?>" name="tAmt" type="hidden">
+      <input value="<?= $price ?>" name="amt" type="hidden">
+      <input value="0" name="txAmt" type="hidden">
+      <input value="0" name="psc" type="hidden">
+      <input value="0" name="pdc" type="hidden">
+      <input value="EPAYTEST" name="scd" type="hidden">
+      <input value="<?= $payment_request_id ?>" name="pid" type="hidden">
+      <input value="http://localhost/park-smart/main-content/success_page.php?q=su" type="hidden" name="su">
+      <input value="http://park-smart/main-content/failure-page.php?q=fu" type="hidden" name="fu">
       <button type="button"onclick="validation();">Calculate Price</button>
       <button type="submit">Book Now</button>
       <button type="button"class="btn cancel" onclick="closeForm()">Close</button>
@@ -130,14 +142,14 @@ else{
             <?php $i=0 ?>
             
             <?php $listing = "SELECT * from `booking_table` where `slot_id`= $id";
-    $listing_run = mysqli_query($conn,$listing); while($listing_row = mysqli_fetch_assoc($listing_run)){ ?>
+            $listing_run = mysqli_query($conn,$listing); 
+            while($listing_row = mysqli_fetch_assoc($listing_run)){ ?>
               <tr>
                 <td><?php echo $listing_row['arrival_time']; ?></td>
                 <td><?php echo $listing_row['departure_time']; ?></td>
               </tr>
 
             <?php } ?>
-            <!-- <div>Please book in the time other than above listed time</div> -->
 
         </table>
         <p>Please book on the time other than this listing</p>
