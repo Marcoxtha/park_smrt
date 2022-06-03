@@ -54,7 +54,7 @@
     <script>
         function makeUnavailable(id){
            $.ajax({
-               url: "http://localhost/Park-Smart/main-content/set.php?id="+id,
+               url: "http://localhost/Park-Smart/main-content/makeUnavailable.php?id="+id,
                type:'GET',
                success:function(res){
                    alert (res);
@@ -65,7 +65,7 @@
         }
         function makeAvailable(id){
             $.ajax({
-               url: "http://localhost/Park-Smart/main-content/reset.php?id="+id,
+               url: "http://localhost/Park-Smart/main-content/makeAvailable.php?id="+id,
                type:'GET',
                success:function(res){
                    alert (res);

@@ -8,7 +8,7 @@ bike.forEach(el => el.addEventListener('click', event => {
     // document.getElementById('selected_slot').value = x;
     // document.getElementById('selected_slot_class').value = y;
     // document.getElementById('rate').value = rate;
-    window.location.assign("http://localhost/park-smart/main-content/popup-form.php?id="+x+"&class="+y+"")
+    window.location.assign("http://localhost/park-smart/main-content/bookingForm.php?id="+x+"&class="+y+"")
 }));
 
 
@@ -22,7 +22,7 @@ car.forEach(el => el.addEventListener('click', event => {
     // document.getElementById('selected_slot').value = x;
     // document.getElementById('selected_slot_class').value = y;
     // document.getElementById('rate').value = rate;
-    window.location.assign("http://localhost/park-smart/main-content/popup-form.php?id="+x+"&class="+y+"")
+    window.location.assign("http://localhost/park-smart/main-content/bookingForm.php?id="+x+"&class="+y+"")
 }));
 
 function closeForm() {

@@ -20,24 +20,24 @@ $i = 1;
     <div class="container">
         <div class="info">
             <form action="" method="post">
-                <label for="bike_rate">Rate for Bike(Per 30 minutes)</label>
-                <input type="number" name="bike_rate" value="<?php echo $row['cost']?>">
-                <label for="car_rate">Rate for Car(Per 30 minutes)</label>
-                <input type="number" name="car_rate" value="<?php echo $row1['cost']?>">
-                <span><?= $msg ?></span>
+                <label for="bike_rate">Rate for Bike(Per 30 minutes)</label><br>
+                <input type="number" name="bike_rate" value="<?php echo $row['cost']?>"><br>
+                <label for="car_rate">Rate for Car(Per 30 minutes)</label><br>
+                <input type="number" name="car_rate" value="<?php echo $row1['cost']?>"><br>
+                <span class="myMsg"><?= $msg ?></span>
                 <button type="submit" class="primary_btn">Update</button>
             </form>
 </div>
 </div>
 </div>
 <style>
-    label{
+    .myMsg{
         display:block;
         font-size:16px;
         font-weight:bold;
     }
     input{
-        width:100%;
+        width:80%;
         padding:2px;
         margin:2%;
         height:5%;
@@ -55,8 +55,8 @@ $i = 1;
         $sql = "UPDATE `price` set cost=$bike_rate where `vehicle_class`='bike'";
         $sql1 = "UPDATE `price` set cost=$car_rate where `vehicle_class`='car'";
         if(mysqli_query($conn,$sql) && mysqli_query($conn,$sql1)){
-            $msg = "Rates Updated successfully.";
-            header('location:http://localhost/park-smart/main-content/rates.php');
+            echo '<script>alert("Rates Changed Successfully.");</script>';
+            header("refresh: 0.5; url = http://localhost/park-smart/main-content/rates.php");
         }
         else{
             $msg = "Couldn't update rate.";

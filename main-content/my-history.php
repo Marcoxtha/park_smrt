@@ -43,9 +43,11 @@ if (!isset($_SESSION['user_details'])) {
           <tr>
             <th>S.N</th>
             <th>Date</th>
+            <th>Slot Name</th>
             <th>Arrival Time</th>
             <th>Departure Time</th>
             <th>Price</th>
+            <th>Action</th>
           </tr>
 
           <?php
@@ -54,9 +56,11 @@ if (!isset($_SESSION['user_details'])) {
             <tr>
               <td><?= $i ?></td>
               <td><?= $result['date'] ?></td>
+              <td>Need to add slot name in history</td>
               <td><?= $result['arrival_time'] ?></td>
               <td><?= $result['departure_time'] ?></td>
               <td><?= $result['price'] ?></td>
+              <td><a>Cancel Booking</a></td>
             </tr>
           <?php } ?>
 
