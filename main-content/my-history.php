@@ -52,11 +52,11 @@ if (!isset($_SESSION['user_details'])) {
 
           <?php
           while ($result = mysqli_fetch_assoc($run)) {
-            $i++; ?>
+            $i++; $id=$result['booking_id'];?>
             <tr>
               <td><?= $i ?></td>
               <td><?= $result['date'] ?></td>
-              <td>Need to add slot name in history</td>
+              <td><?= $result['slot_name'] ?></td>
               <td><?= $result['arrival_time'] ?></td>
               <td><?= $result['departure_time'] ?></td>
               <td><?= $result['price'] ?></td>

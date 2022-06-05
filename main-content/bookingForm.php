@@ -3,20 +3,24 @@ session_start();
 $msg = "";
 include "database_configuration.php";
     $id = $_GET['id'];
+    $_SESSION['slot_id'] = $id;
     $slot_type = $_GET['class'];
     $query = "SELECT `cost` from `price` where vehicle_class='$slot_type'";
     $runquery = mysqli_query($conn,$query);
     $ratequery = mysqli_fetch_assoc($runquery);
     $rate = $ratequery['cost'];
-    $payment_request_id = "PRID-". rand(1,1000000);
+    // $payment_request_id = "PRID-". rand(1,1000000);
 if ($_POST) {
   
   $query3 = "SELECT `slot_name` from `slots` where `slot_id`=$id";
     $run_query3 = mysqli_query($conn,$query3);
     $result3 = mysqli_fetch_assoc($run_query3);
     $slot_name = $result3['slot_name'];
+    $_SESSION['slot_name'] = $slot_name;
   $price = $_POST['price'];
+  $_SESSION['price'] = $price; 
   $date = date("Y-m-d");
+  $_SESSION['date'] = $date; 
   $listing = "SELECT * from `booking_table` where `slot_id`= $id AND `date`='$date'" ;
     $listing_run = mysqli_query($conn,$listing);
   $i=0;
@@ -37,8 +41,11 @@ if ($_POST) {
   $full_name = $_SESSION['user_details']['full_name'];
   $user_id = $_SESSION['user_details']['user_id'];
   $vehicle_num = $_REQUEST['vehicle_no'];
+  $_SESSION['vehicle_num'] = $vehicle_num;
   $arrival_time = $_REQUEST['arrival_time'];
+  $_SESSION['arrival_time'] = $arrival_time;
   $departure_time = $_REQUEST['departure_time'];
+  $_SESSION['departure_time'] = $departure_time;
   // echo $arrival_time;
   // echo $departure_time;
   $isvalid = true;
@@ -61,17 +68,19 @@ if ($_POST) {
   // }
   if($isvalid == true){
 
-      $sql = "INSERT INTO `booking_table` (`slot_id`,`slot_name`,`user_id`,`full_name`,`vehicle_no`,`date`,`arrival_time`,`departure_time`,`price`,`payment_request_id`) 
-      VALUES ($id,'$slot_name',$user_id,'$full_name','$vehicle_num','$date','$arrival_time','$departure_time','$price','$payment_request_id');";
+
+      // $sql = "INSERT INTO `booking_table` (`slot_id`,`slot_name`,`user_id`,`full_name`,`vehicle_no`,`date`,`arrival_time`,`departure_time`,`price`,`payment_request_id`) 
+      // VALUES ($id,'$slot_name',$user_id,'$full_name','$vehicle_num','$date','$arrival_time','$departure_time','$price','$payment_request_id');";
       // $result = mysqli_query($conn, $sql);
-if (mysqli_query($conn, $sql)) {
-$msg = "Booked Successfully";
-// header("location:http://localhost/Park-Smart/main-content/paymentMethod.php?");
+// if (mysqli_query($conn, $sql)) {
+
+// $msg = "Booked Successfully";
+header("location:http://localhost/Park-Smart/main-content/booking_method.php");
 // header('location:bill-report.php');
-}
-else{
-  $msg = "Couldn't book the space.";
-}
+// }
+// else{
+//   $msg = "Couldn't book the space.";
+// }
     }
 
   }
@@ -124,7 +133,7 @@ else{
       <label for="price">Price</label>
       <input type="number" name="price" id="price" placeholder="Click on ''Calculate Price'' to find price" value="" readonly>
       <span class="msg"><?= $msg ?></span>
-      <input value="<?= $price ?>" name="tAmt" type="hidden">
+      <!-- <input value="<?= $price ?>" name="tAmt" type="hidden">
       <input value="<?= $price ?>" name="amt" type="hidden">
       <input value="0" name="txAmt" type="hidden">
       <input value="0" name="psc" type="hidden">
@@ -132,7 +141,7 @@ else{
       <input value="EPAYTEST" name="scd" type="hidden">
       <input value="<?= $payment_request_id ?>" name="pid" type="hidden">
       <input value="http://localhost/park-smart/main-content/success_page.php?q=su" type="hidden" name="su">
-      <input value="http://park-smart/main-content/failure-page.php?q=fu" type="hidden" name="fu">
+      <input value="http://park-smart/main-content/failure-page.php?q=fu" type="hidden" name="fu"> -->
       <button type="button"onclick="validation();">Calculate Price</button>
       <button type="submit">Book Now</button>
       <button type="button"class="btn cancel" onclick="closeForm()">Close</button>

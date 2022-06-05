@@ -1,5 +1,5 @@
 <?php
-require_once "../configuration/database_configuration.php";
+require_once "database_configuration.php";
 if ($_GET && isset($_REQUEST["refId"])) {
     //Fetch record with respect to payment request id
     $sql = "SELECT * from `booking_table` where `price` = "
@@ -12,7 +12,7 @@ if ($_GET && isset($_REQUEST["refId"])) {
     if ($purchaseData) {
         $url = "https://uat.esewa.com.np/epay/transrec";
         $data = [
-            'amt' => $purchaseData["amount"],
+            'amt' => $purchaseData["price"],
             'rid' => $_REQUEST["refId"],
             'pid' => $purchaseData["payment_request_id"],
             'scd' => 'EPAYTEST'
@@ -31,7 +31,10 @@ if ($_GET && isset($_REQUEST["refId"])) {
             $sql = "UPDATE `booking_table` set payment_status = 1 
             where payment_request_id = '" .$purchaseData["payment_request_id"]."'" ;
             if(mysqli_query($conn, $sql)) {
-                echo "<h1>Booking Successful</h1>";
+    $sql2 = "UPDATE `booking_table` SET `booking_status`= 1 where `payment_request_id` = '".$_REQUEST['oid']."';";
+    mysqli_query($conn,$sql2);
+
+                header('location:http://localhost/Park-Smart/main-content/receipt_eSewa.php');
             } else {
                 echo "Some problem occurred while saving the request in our end. Please contact the administrator or call us at +977-9851320011.";
             }
