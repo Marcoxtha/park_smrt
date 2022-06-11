@@ -62,6 +62,9 @@ if ($_POST) {
     }
   }
 }
+else{
+  $isvalid = true;
+}
   // exit();
   // if($price==NULL){
   //   $msg = "Please calculate the price first";

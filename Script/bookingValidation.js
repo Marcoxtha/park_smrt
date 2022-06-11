@@ -78,15 +78,22 @@ function convertTo24HrsFormat(time) {
 
     if (minutes < 30) {
       alert("Time too short");
+      isValidate = false;
+    }
+    else{
+       isValidate=true;
     }
     //units=how many 30 minutes diff
-    m=parseInt(minutes);
+    if(isValidate==true){
+      m=parseInt(minutes);
   
-    var unit=m/30;
-    var unit=Math.round(unit);
-    // alert("integer banako minutes lai"+ m);
-    var price = document.getElementById('rate').value;
-    var cost= price*unit;
-    // alert("total cost" + cost);
-    document.getElementById('price').value = cost;
+      var unit=m/30;
+      var unit=Math.round(unit);
+      // alert("integer banako minutes lai"+ m);
+      var price = document.getElementById('rate').value;
+      var cost= price*unit;
+      // alert("total cost" + cost);
+      document.getElementById('price').value = cost;
+    }
+    
   }
