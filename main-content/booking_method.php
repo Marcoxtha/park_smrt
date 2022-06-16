@@ -1,11 +1,21 @@
 <?php
 session_start();
 include "database_configuration.php";
-
+if (!isset($_SESSION['user_details'])) {
+    header('location:login.php');
+  } else { }  
+  ?>
+  <?php
+    // $payment_request_id = "PRID-" . rand(1, 1000000);
+    // $_SESSION['pri'] = $payment_request_id;
 if (isset($_POST["moneyless"])) {
-    $sql2 = "UPDATE `booking_table` SET `booking_status`= 1 where `payment_request_id` = " . $_SESSION['pri'] . ";";
-    mysqli_query($conn, $sql2);
-    header('location:http://localhost/Park-Smart/main-content/receipt_no_eSewa.php');
+    $sql2 = "UPDATE `booking_table` SET `booking_status`= 1 where `payment_request_id` = '" . $_SESSION['pri'] . "';";
+    if(mysqli_query($conn, $sql2)){
+        // echo "hello";
+        header('location:http://localhost/Park-Smart/main-content/receipt_no_eSewa.php');
+    }
+    
+    
 } else {
     // echo 'this fasd';
     $payment_request_id = "PRID-" . rand(1, 1000000);

@@ -3,6 +3,8 @@ session_start();
 $error_msg = '';
 $error_msg2 = '';
 include 'database_configuration.php';
+$sql = "DELETE from `booking_table` where `payment_status`=0 and `booking_status`=0";
+mysqli_query($conn,$sql);
 if(isset($_SESSION['user_details'])){
     header('location:after-login.php');
 }

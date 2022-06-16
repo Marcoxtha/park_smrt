@@ -49,34 +49,32 @@ body {
 </head>
 <body>
 <div>
-<h4>Name:  <?= $_SESSION['user_details']['full_name']?></h4>
-<h4>Email:  <?= $_SESSION['user_details']['email']?></h4>
-<h4>Date:  <?= $_SESSION['date']?></h4>
-<h4>Vehicle Number:  <?= $_SESSION['vehicle_num']?></h4>
-<h4>Arrival Time:  <?=$_SESSION['arrival_time']?></h4>
-<h4>Departure Time:  <?= $_SESSION['departure_time']?></h4>
-<h4>Booked Slot:  <?=$_SESSION['slot_name']?></h4>
-<h4>Price:  <?= $_SESSION['price']?></h4>
-<h4>Mode of Payment:  Paid through eSewa</h4>
+<h3>Name:  <i><?= $_SESSION['user_details']['full_name']?></i></h3>
+<h3>Email:  <i><?= $_SESSION['user_details']['email']?></i></h3>
+<h3>Date:  <i><?= $_SESSION['date']?></i></h3>
+<h3>Vehicle Number:  <i><?= $_SESSION['vehicle_num']?></i></h3>
+<h3>Arrival Time:  <i><?=$_SESSION['arrival_time']?></i></h3>
+<h3>Departure Time:  <i><?= $_SESSION['departure_time']?></i></h3>
+<h3>Booked Slot:  <i><?=$_SESSION['slot_name']?></i></h3>
+<h3>Price:  <i><?= $_SESSION['price']?></i></h3>
+<h3>Mode of Payment:  <i>Cash on checkout</i></h3>
 
 <button onclick="window.print();return false;">Save as PDF</button>
-</div>
+<br>
 <a href="http://localhost/Park-Smart/main-content/after-login.php">Return to Home</a>
-
+</div>
 </body>
 </html>
 
 
-<?php 
-    unset($_SESSION['arrival_time']);
-    unset($_SESSION['departure_time']);
-    unset($_SESSION['slot_name']);
-    unset($_SESSION['date']);
-    unset($_SESSION['price']);
-    unset($_SESSION['slot_id']);
-    unset($_SESSION['vehicle_num']);
-
-
-?>
+<!-- <?php 
+    // unset($_SESSION['arrival_time']);
+    // unset($_SESSION['departure_time']);
+    // unset($_SESSION['slot_name']);
+    // unset($_SESSION['date']);
+    // unset($_SESSION['price']);
+    // unset($_SESSION['slot_id']);
+    // unset($_SESSION['vehicle_num']);
+?> -->
 
 <!-- <button onclick="window.print();return false;">Save as PDF</button> -->

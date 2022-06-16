@@ -1,6 +1,10 @@
 <?php
 session_start();
 $msg = "";
+if (!isset($_SESSION['user_details'])) {
+  header('location:login.php');
+} else { } ?>
+<?php
 include "database_configuration.php";
     $id = $_GET['id'];
     $_SESSION['slot_id'] = $id;
@@ -21,7 +25,7 @@ if ($_POST) {
   $_SESSION['price'] = $price; 
   $date = date("Y-m-d");
   $_SESSION['date'] = $date; 
-  $listing = "SELECT * from `booking_table` where `slot_id`= $id AND `date`='$date'" ;
+  $listing = "SELECT * from `booking_table` where `slot_id`= $id AND `date`='$date' AND `cancel_status`=0";
     $listing_run = mysqli_query($conn,$listing);
   $i=0;
   while($listing_row = mysqli_fetch_assoc($listing_run)){
@@ -52,7 +56,7 @@ if ($_POST) {
   if($length>0){
   for($i=0;$i<$length;$i++)
   {
-    if($arrival_time>=$arr[$i] || $departure_time<=$arr2[$i]){
+    if($arrival_time>=$arr[$i] && $arrival_time<=$arr2[$i]){
       $msg = "The time you entered is already booked by others.";
       $isvalid = false;
     }
@@ -65,10 +69,21 @@ if ($_POST) {
 else{
   $isvalid = true;
 }
-  // exit();
-  // if($price==NULL){
-  //   $msg = "Please calculate the price first";
-  // }
+if(strlen($vehicle_num)!=4){
+  $msg = "Vehicle number should be of length 4";
+  $isvalid = false;
+}
+
+if($vehicle_num>9999){
+  $msg = "Invalid vehicle number";
+  $isvalid = false;
+}
+
+  if($price==NULL){
+    $msg = "Please calculate the price first";
+    $isvalid = false;
+  }
+  
   if($isvalid == true){
 
 

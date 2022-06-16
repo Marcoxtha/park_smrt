@@ -67,15 +67,13 @@ body {
 </body>
 </html>
 
-<?php 
-    unset($_SESSION['arrival_time']);
-    unset($_SESSION['departure_time']);
-    unset($_SESSION['slot_name']);
-    unset($_SESSION['date']);
-    unset($_SESSION['price']);
-    unset($_SESSION['slot_id']);
-    unset($_SESSION['vehicle_num']);
-
-
-?>
+<!-- <?php 
+    // unset($_SESSION['arrival_time']);
+    // unset($_SESSION['departure_time']);
+    // unset($_SESSION['slot_name']);
+    // unset($_SESSION['date']);
+    // unset($_SESSION['price']);
+    // unset($_SESSION['slot_id']);
+    // unset($_SESSION['vehicle_num']);
+?> -->
 <!-- <button onclick="window.print();return false;">Save as PDF</button> -->

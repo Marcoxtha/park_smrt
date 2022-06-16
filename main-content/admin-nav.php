@@ -36,7 +36,13 @@
         <a href="admin-report.php" class="admin_nav_link">
             <div class="admin_nav_item">
                 <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                <li>Report</li>
+                <li>Booking Report</li>
+            </div>
+        </a>
+        <a href="cancelled-booking.php" class="admin_nav_link">
+            <div class="admin_nav_item">
+                <i class="fa fa-ban" aria-hidden="true"></i>
+                <li>Cancelled Booking</li>
             </div>
         </a>
         <a href="rates.php" class="admin_nav_link">

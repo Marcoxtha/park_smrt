@@ -72,11 +72,12 @@ td {
 
 th,
 td {
-    padding: 10px 16px;
-    max-width: 100%;
-    word-wrap: break-word;
+    padding: 5px 10px;
+    /* height: max-content; */
+    width: auto;
+    /* max-width: 150%; */
+    /* word-wrap: break-word; */
 }
-
 th {
     background-color: chocolate;
     color: white;
@@ -151,4 +152,11 @@ form textarea {
 td a {
     text-decoration: none;
     color:black;
+}
+
+caption{
+    color:red;
+    font-size: larger;
+    font-weight: bolder;
+    /* margin:2%; */
 }
